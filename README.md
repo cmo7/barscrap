@@ -20,7 +20,7 @@ $ npm install -g barscrap
 $ barscrap COMMAND
 running command...
 $ barscrap (--version)
-barscrap/0.3.0 linux-x64 node-v18.15.0
+barscrap/0.4.0 linux-x64 node-v18.15.0
 $ barscrap --help [COMMAND]
 USAGE
   $ barscrap COMMAND
@@ -64,7 +64,7 @@ EXAMPLES
   hello friend from oclif! (./src/commands/hello/index.ts)
 ```
 
-_See code: [dist/commands/barscrap/index.ts](https://github.com/cmo7/barscrap/blob/v0.3.0/dist/commands/barscrap/index.ts)_
+_See code: [dist/commands/barscrap/index.ts](https://github.com/cmo7/barscrap/blob/v0.4.0/dist/commands/barscrap/index.ts)_
 
 ## `barscrap barscrap scrape FILE OUT [INSTANCES]`
 
