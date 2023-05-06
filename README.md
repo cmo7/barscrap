@@ -29,8 +29,6 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`barscrap barscrap PERSON`](#barscrap-barscrap-person)
-* [`barscrap barscrap scrape FILE OUT [INSTANCES]`](#barscrap-barscrap-scrape-file-out-instances)
 * [`barscrap help [COMMANDS]`](#barscrap-help-commands)
 * [`barscrap plugins`](#barscrap-plugins)
 * [`barscrap plugins:install PLUGIN...`](#barscrap-pluginsinstall-plugin)
@@ -41,42 +39,7 @@ USAGE
 * [`barscrap plugins:uninstall PLUGIN...`](#barscrap-pluginsuninstall-plugin-1)
 * [`barscrap plugins:uninstall PLUGIN...`](#barscrap-pluginsuninstall-plugin-2)
 * [`barscrap plugins update`](#barscrap-plugins-update)
-
-## `barscrap barscrap PERSON`
-
-Say hello
-
-```
-USAGE
-  $ barscrap barscrap PERSON -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Who is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [dist/commands/barscrap/index.ts](https://github.com/cmo7/barscrap/blob/v0.4.0/dist/commands/barscrap/index.ts)_
-
-## `barscrap barscrap scrape FILE OUT [INSTANCES]`
-
-Intenta descargar los datos de una serie de productos.
-
-```
-USAGE
-  $ barscrap barscrap scrape FILE OUT [INSTANCES]
-
-DESCRIPTION
-  Intenta descargar los datos de una serie de productos.
-```
+* [`barscrap scrape FILE OUT [INSTANCES]`](#barscrap-scrape-file-out-instances)
 
 ## `barscrap help [COMMANDS]`
 
@@ -330,4 +293,23 @@ FLAGS
 DESCRIPTION
   Update installed plugins.
 ```
+
+## `barscrap scrape FILE OUT [INSTANCES]`
+
+Intenta descargar los datos de una serie de productos.
+
+```
+USAGE
+  $ barscrap scrape FILE OUT [INSTANCES]
+
+ARGUMENTS
+  FILE       Archivo de entrada con formato de un codigo de barras por línea
+  OUT        Archivo de salida, con formato de un producto por fila en CSV
+  INSTANCES  [default: 5] Número máximo de búsquedas simultaneas (por defecto 5)
+
+DESCRIPTION
+  Intenta descargar los datos de una serie de productos.
+```
+
+_See code: [dist/commands/scrape/index.ts](https://github.com/cmo7/barscrap/blob/v0.4.0/dist/commands/scrape/index.ts)_
 <!-- commandsstop -->
