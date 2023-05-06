@@ -10,6 +10,9 @@ dependencies:
   '@oclif/plugin-plugins':
     specifier: ^2.4.7
     version: 2.4.7(@types/node@16.18.25)(typescript@4.9.5)
+  '@oclif/plugin-warn-if-update-available':
+    specifier: ^2.0.36
+    version: 2.0.36(@types/node@16.18.25)(typescript@4.9.5)
   chalk:
     specifier: ^4.1.2
     version: 4.1.2
@@ -699,7 +702,6 @@ packages:
       - '@types/node'
       - supports-color
       - typescript
-    dev: true
 
   /@oclif/test@2.3.17(@types/node@16.18.25)(typescript@4.9.5):
     resolution: {integrity: sha512-Ph3Gg1n7Sz2JHsoLHNifzwbeDs8kKlBK+JcFikkoH7Fc+FoNXOsEBY6HTF0/8P3SeVK3H3MyBEvGNsGbeClhtg==}
@@ -3241,7 +3243,6 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols@4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
