@@ -1,4 +1,4 @@
-import {Args, Command} from '@oclif/core'
+import {Args, Command, Flags} from '@oclif/core'
 import {promises as fs} from 'node:fs'
 // eslint-disable-next-line node/no-missing-import
 import {parse, stringify} from 'csv/sync'
@@ -30,8 +30,18 @@ export class Scrape extends Command {
     }),
   }
 
+  static flags = {
+    failFile: Flags.string(
+      {
+        char: 'f',
+        description: 'Fichero donde guardar registros no encontrados',
+      },
+    ),
+  }
+
   async run(): Promise<any> {
     const {args} = await this.parse(Scrape)
+    const {flags} = await this.parse(Scrape)
     console.log(`
 ██████╗  █████╗ ██████╗ ███████╗ ██████╗██████╗  █████╗ ██████╗ 
 ██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗
@@ -93,5 +103,14 @@ export class Scrape extends Command {
     })
 
     await fs.writeFile(args.out, data, 'utf-8')
+
+    if (pending.length > 0) {
+      console.log('No se han podido encontrar', chalk.red(pending.length), 'productos')
+    }
+
+    if (flags.failFile && pending.length > 0) {
+      console.log(chalk.bold('Los productos no encontrados se escriben en el archivo', flags.failFile))
+      await fs.writeFile(flags.failFile, pending.join('/n'), 'utf-8')
+    }
   }
 }

@@ -78,13 +78,17 @@ async function scrape(s: Webpage, barcode: string, browser: Browser): Promise<Pr
     await page.waitForSelector(s.navSelectors.resultsPage, {
       timeout: 1000,
     })
-    console.log(chalk.blue('Encontrado    ') + barcode)
     p = await extractProduct(page, s, barcode)
-  } catch {
-    console.log(chalk.red('No encontrado ') + barcode)
-  }
+  } catch {}
 
   await page.close()
+
+  if (p.provider === 'not found') {
+    console.log(chalk.red('No encontrado ') + barcode)
+  } else {
+    console.log(chalk.blue('Encontrado    ') + barcode)
+  }
+
   return p
 }
 
