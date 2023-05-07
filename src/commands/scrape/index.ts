@@ -104,12 +104,17 @@ export class Scrape extends Command {
 
     await fs.writeFile(args.out, data, 'utf-8')
 
+    const plural = pending.length !== 1
     if (pending.length > 0) {
-      console.log('No se han podido encontrar', chalk.red(pending.length), 'productos')
+      console.log(`No se ${plural ? 'han' : 'ha'} podido encontrar ${chalk.red(pending.length)} ${plural ? 'productos' : 'producto'}`)
     }
 
     if (flags.failFile && pending.length > 0) {
-      console.log(chalk.bold('Los productos no encontrados se escriben en el archivo', flags.failFile))
+      console.log(chalk.bold(
+        plural ?
+          `Los productos no encontrados se escriben en el archivo ${flags.failFile}` :
+          `El producto no encontrado se escribe en el archivo ${flags.failFile}`,
+      ))
       await fs.writeFile(flags.failFile, pending.join('/n'), 'utf-8')
     }
   }

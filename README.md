@@ -58,12 +58,15 @@ Intenta descargar los datos de una serie de productos.
 
 ```
 USAGE
-  $ barscrap scrape FILE OUT [INSTANCES]
+  $ barscrap scrape FILE OUT [INSTANCES] [-f <value>]
 
 ARGUMENTS
   FILE       Archivo de entrada con formato de un codigo de barras por línea
   OUT        Archivo de salida, con formato de un producto por fila en CSV
   INSTANCES  [default: 5] Número máximo de búsquedas simultaneas (por defecto 5)
+
+FLAGS
+  -f, --failFile=<value>  Fichero donde guardar registros no encontrados
 
 DESCRIPTION
   Intenta descargar los datos de una serie de productos.
