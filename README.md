@@ -20,7 +20,7 @@ $ npm install -g barscrap
 $ barscrap COMMAND
 running command...
 $ barscrap (--version)
-barscrap/0.6.0 linux-x64 node-v18.15.0
+barscrap/0.6.1 linux-x64 node-v18.15.0
 $ barscrap --help [COMMAND]
 USAGE
   $ barscrap COMMAND
@@ -72,5 +72,5 @@ DESCRIPTION
   Intenta descargar los datos de una serie de productos.
 ```
 
-_See code: [dist/commands/scrape/index.ts](https://github.com/cmo7/barscrap/blob/v0.6.0/dist/commands/scrape/index.ts)_
+_See code: [dist/commands/scrape/index.ts](https://github.com/cmo7/barscrap/blob/v0.6.1/dist/commands/scrape/index.ts)_
 <!-- commandsstop -->
