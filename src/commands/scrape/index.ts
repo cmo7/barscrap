@@ -7,6 +7,7 @@ import webpages from '../../webpages'
 import {Product} from '../../product'
 // eslint-disable-next-line unicorn/import-style
 import * as chalk from 'chalk'
+import banners from './banners'
 
 export class Scrape extends Command {
   static description: string | undefined = 'Intenta descargar los datos de una serie de productos.';
@@ -42,46 +43,31 @@ export class Scrape extends Command {
   async run(): Promise<any> {
     const {args} = await this.parse(Scrape)
     const {flags} = await this.parse(Scrape)
-    console.log(`
-██████╗  █████╗ ██████╗ ███████╗ ██████╗██████╗  █████╗ ██████╗
-██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗
-██████╔╝███████║██████╔╝███████╗██║     ██████╔╝███████║██████╔╝
-██╔══██╗██╔══██║██╔══██╗╚════██║██║     ██╔══██╗██╔══██║██╔═══╝
-██████╔╝██║  ██║██║  ██║███████║╚██████╗██║  ██║██║  ██║██║
-╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝
-    `)
+    console.log(banners.BARSCRAP)
 
     console.log(chalk.bold('Obteniendo productos de CSV de ' + args.file))
     console.log()
 
     const csvString = await fs.readFile(args.file, 'utf-8')
-    const rows =  parse(csvString, {
+    const rows = parse(csvString, {
       // eslint-disable-next-line camelcase
       skip_empty_lines: true,
     }) as string[]
-
-    /*     console.log(`Buscando en Heo ${rows.length} registros`)
-    const [resultsHeo, rowsNotFoundOnHeo] = await batchProcess(rows, 2, webpages.heo)
-    console.log(`Encontrados ${resultsHeo.length} registros`)
-
-    console.log(`Buscando en SD ${rowsNotFoundOnHeo.length} registros`)
-    const [resultsSD, rowsNotFoundOnSD] = await batchProcess(rowsNotFoundOnHeo, 2, webpages.sd)
-    console.log(`Encontrados ${resultsSD.length} registros`) */
 
     let pending = [...rows]
     let results: Product[] = []
     for (const w of Object.values(webpages)) {
       console.log()
-      console.log('---------------------------------------------')
+      console.log(banners.HLINE)
       console.log(
         chalk.green(
           `Buscando en ${w.name} ${pending.length} registros`,
         ))
-      console.log('---------------------------------------------')
+      console.log(banners.HLINE)
 
       // eslint-disable-next-line no-await-in-loop
       const [found, notFound] = await batchProcess(pending, args.instances, w)
-      console.log('---------------------------------------------')
+      console.log(banners.HLINE)
       console.log(`Encontrados ${found.length} registros`)
       pending = [...notFound]
       results = [...results, ...found]
