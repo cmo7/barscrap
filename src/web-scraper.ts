@@ -95,15 +95,25 @@ async function scrape(s: Webpage, barcode: string, browser: Browser): Promise<Pr
 async function batchProcess(barcodes: string[], batchSize: number, w: Webpage): Promise<[Product[], string[]]> {
   const browser = await puppeteer.launch({headless: 'new'})
 
-  const queue = barcodes // .filter(async x => !db.exists(x))
+  let queue = barcodes // .filter(async x => !db.exists(x))
 
   let processed = 0
   let results: Product[] = []
   while (processed < queue.length) {
+    const openPages = await browser.pages()
+    console.log("Páginas abiertas: " + openPages.length)
     const batch = queue.slice(processed, processed + batchSize)
+    try {
+
+    console.log("Procesando Batch:")
+    console.log(batch)
     // eslint-disable-next-line no-await-in-loop
     results = [...results, ...await Promise.all(batch.map(x => scrape(w, x, browser)))]
     processed += batchSize
+    } catch {
+      console.log("Error con el batch, devolviendo a la cola y continuando")
+      queue = [...queue, ...batch]
+    }
   }
 
   await browser.close()
