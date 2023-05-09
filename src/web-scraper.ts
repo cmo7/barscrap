@@ -101,12 +101,8 @@ async function batchProcess(barcodes: string[], batchSize: number, w: Webpage): 
   let results: Product[] = []
   while (processed < queue.length) {
     const openPages = await browser.pages()
-    console.log("Páginas abiertas: " + openPages.length)
     const batch = queue.slice(processed, processed + batchSize)
     try {
-
-    console.log("Procesando Batch:")
-    console.log(batch)
     // eslint-disable-next-line no-await-in-loop
     results = [...results, ...await Promise.all(batch.map(x => scrape(w, x, browser)))]
     processed += batchSize
@@ -121,6 +117,20 @@ async function batchProcess(barcodes: string[], batchSize: number, w: Webpage): 
     results.filter(x => x.provider !== 'not found'),
     results.filter(x => x.provider === 'not found').map(x => x.code),
   ]
+}
+
+async function splitInBatches(barcodes: string[], batchSize: number): Promise<string[][]> {
+  const result = [];
+  while (barcodes.length > 0) {
+    const b = [];
+    for (let i = 0; i < batchSize && barcodes.length > 0; i++) {
+      const data = barcodes.pop()
+      if (data)
+      b.push(data)
+    }
+    result.push(b)
+  }
+  return result;
 }
 
 export {scrape, batchProcess}
