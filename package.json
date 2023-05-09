@@ -1,6 +1,6 @@
 {
   "name": "barscrap",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Scrapper de productos basado en códigos de barras",
   "author": "Marce Concepción",
   "bin": {
