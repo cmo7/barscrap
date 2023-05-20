@@ -20,7 +20,7 @@
     "@oclif/core": "^2.8.5",
     "@oclif/plugin-help": "^5.2.9",
     "@oclif/plugin-plugins": "^2.4.7",
-    "@oclif/plugin-warn-if-update-available": "^2.0.36",
+    "@oclif/plugin-warn-if-update-available": "^2.0.37",
     "chalk": "^4.1.2",
     "csv": "^6.2.12",
     "puppeteer": "^20.1.1",
