@@ -28,7 +28,7 @@
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
-    "@oclif/test": "^2.3.17",
+    "@oclif/test": "^2.3.21",
     "@types/async-csv": "^2.1.1",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^9.1.1",
