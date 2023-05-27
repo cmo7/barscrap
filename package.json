@@ -22,7 +22,7 @@
     "@oclif/plugin-plugins": "^2.4.7",
     "@oclif/plugin-warn-if-update-available": "^2.0.36",
     "chalk": "^4.1.2",
-    "csv": "^6.2.12",
+    "csv": "^6.3.1",
     "puppeteer": "^20.1.1",
     "sqlite": "^4.2.0",
     "sqlite3": "^5.1.6"
