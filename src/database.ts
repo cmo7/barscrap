@@ -2,7 +2,7 @@ import * as sqlite3 from 'sqlite3'
 import {open} from 'sqlite'
 import {Product} from './product'
 
-async function openDB() {
+async function openDB(): Promise<any> {
   return open({
     filename: './database.db',
     driver: sqlite3.cached.Database,

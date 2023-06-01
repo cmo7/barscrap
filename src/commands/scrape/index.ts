@@ -7,7 +7,7 @@ import webpages from '../../webpages'
 import {Product} from '../../product'
 // eslint-disable-next-line unicorn/import-style
 import * as chalk from 'chalk'
-import banners from './banners'
+import banners from '../../util/banners'
 
 export class Scrape extends Command {
   static description: string | undefined = 'Intenta descargar los datos de una serie de productos.';

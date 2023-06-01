@@ -9,6 +9,6 @@ const BARSCRAP = `
 const HLINE = '---------------------------------------------'
 const banners = {
   BARSCRAP,
-  HLINE
+  HLINE,
 }
 export default banners
