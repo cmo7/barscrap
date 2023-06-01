@@ -20,7 +20,7 @@ $ npm install -g barscrap
 $ barscrap COMMAND
 running command...
 $ barscrap (--version)
-barscrap/0.6.1 linux-x64 node-v18.15.0
+barscrap/0.6.1 linux-x64 node-v18.16.0
 $ barscrap --help [COMMAND]
 USAGE
   $ barscrap COMMAND
@@ -29,8 +29,29 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`barscrap categorizer IN RULES OUT`](#barscrap-categorizer-in-rules-out)
 * [`barscrap help [COMMANDS]`](#barscrap-help-commands)
+* [`barscrap rules IN OUT`](#barscrap-rules-in-out)
 * [`barscrap scrape FILE OUT [INSTANCES]`](#barscrap-scrape-file-out-instances)
+
+## `barscrap categorizer IN RULES OUT`
+
+Genera un archivo de reglas JSON a partir de un CSV
+
+```
+USAGE
+  $ barscrap categorizer IN RULES OUT
+
+ARGUMENTS
+  IN     Archivo con los productos a categorizar, CSV
+  RULES  Archivo de reglas en formato JSON
+  OUT    Archivo que contendrá los productos categorizados
+
+DESCRIPTION
+  Genera un archivo de reglas JSON a partir de un CSV
+```
+
+_See code: [dist/commands/categorizer/index.ts](https://github.com/cmo7/barscrap/blob/v0.6.1/dist/commands/categorizer/index.ts)_
 
 ## `barscrap help [COMMANDS]`
 
@@ -51,6 +72,24 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.2.9/src/commands/help.ts)_
+
+## `barscrap rules IN OUT`
+
+Genera un archivo de reglas JSON a partir de un CSV
+
+```
+USAGE
+  $ barscrap rules IN OUT
+
+ARGUMENTS
+  IN   Archivo de reglas en formato CSV
+  OUT  Archivo de reglas en formato JSON
+
+DESCRIPTION
+  Genera un archivo de reglas JSON a partir de un CSV
+```
+
+_See code: [dist/commands/rules/index.ts](https://github.com/cmo7/barscrap/blob/v0.6.1/dist/commands/rules/index.ts)_
 
 ## `barscrap scrape FILE OUT [INSTANCES]`
 
