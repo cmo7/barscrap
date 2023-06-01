@@ -20,7 +20,7 @@ $ npm install -g barscrap
 $ barscrap COMMAND
 running command...
 $ barscrap (--version)
-barscrap/0.6.1 linux-x64 node-v18.16.0
+barscrap/1.0.0 linux-x64 node-v18.16.0
 $ barscrap --help [COMMAND]
 USAGE
   $ barscrap COMMAND
@@ -51,7 +51,7 @@ DESCRIPTION
   Genera un archivo de reglas JSON a partir de un CSV
 ```
 
-_See code: [dist/commands/categorizer/index.ts](https://github.com/cmo7/barscrap/blob/v0.6.1/dist/commands/categorizer/index.ts)_
+_See code: [dist/commands/categorizer/index.ts](https://github.com/cmo7/barscrap/blob/v1.0.0/dist/commands/categorizer/index.ts)_
 
 ## `barscrap help [COMMANDS]`
 
@@ -89,7 +89,7 @@ DESCRIPTION
   Genera un archivo de reglas JSON a partir de un CSV
 ```
 
-_See code: [dist/commands/rules/index.ts](https://github.com/cmo7/barscrap/blob/v0.6.1/dist/commands/rules/index.ts)_
+_See code: [dist/commands/rules/index.ts](https://github.com/cmo7/barscrap/blob/v1.0.0/dist/commands/rules/index.ts)_
 
 ## `barscrap scrape FILE OUT [INSTANCES]`
 
@@ -111,5 +111,5 @@ DESCRIPTION
   Intenta descargar los datos de una serie de productos.
 ```
 
-_See code: [dist/commands/scrape/index.ts](https://github.com/cmo7/barscrap/blob/v0.6.1/dist/commands/scrape/index.ts)_
+_See code: [dist/commands/scrape/index.ts](https://github.com/cmo7/barscrap/blob/v1.0.0/dist/commands/scrape/index.ts)_
 <!-- commandsstop -->
