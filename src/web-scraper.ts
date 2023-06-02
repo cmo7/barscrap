@@ -100,18 +100,18 @@ async function batchProcess(barcodes: string[], batchSize: number, w: Webpage): 
   let processed = 0
   let results: Product[] = []
   while (processed < queue.length) {
+    // eslint-disable-next-line no-await-in-loop
     const openPages = await browser.pages()
-    console.log("Páginas abiertas: " + openPages.length)
+    console.log('Páginas abiertas: ' + openPages.length)
     const batch = queue.slice(processed, processed + batchSize)
     try {
-
-    console.log("Procesando Batch:")
-    console.log(batch)
-    // eslint-disable-next-line no-await-in-loop
-    results = [...results, ...await Promise.all(batch.map(x => scrape(w, x, browser)))]
-    processed += batchSize
+      console.log('Procesando Batch:')
+      console.log(batch)
+      // eslint-disable-next-line no-await-in-loop
+      results = [...results, ...await Promise.all(batch.map(x => scrape(w, x, browser)))]
+      processed += batchSize
     } catch {
-      console.log("Error con el batch, devolviendo a la cola y continuando")
+      console.log('Error con el batch, devolviendo a la cola y continuando')
       queue = [...queue, ...batch]
     }
   }
