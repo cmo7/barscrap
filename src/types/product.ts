@@ -6,7 +6,5 @@ interface Product {
     imageURLs: string[];
     description: string;
     brand: string;
-    category: string;
+    category: string[];
 }
-
-export {Product}

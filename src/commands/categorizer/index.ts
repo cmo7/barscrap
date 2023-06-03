@@ -2,18 +2,8 @@ import {Command, Args} from '@oclif/core'
 import {promises as fs} from 'node:fs'
 // eslint-disable-next-line node/no-missing-import
 import {parse, stringify} from 'csv/sync'
+import {categorizeProduct} from '../../lib/categorizer'
 
-interface Rule {
-    keywords: string[],
-    category: string,
-}
-
-interface Product {
-  id: string,
-  name: string,
-  description: string,
-  category?: string[]
-}
 
 export class Categorizer extends Command {
     static description: string | undefined = 'Genera un archivo de reglas JSON a partir de un CSV';
@@ -44,9 +34,14 @@ export class Categorizer extends Command {
         skip_empty_lines: true,
       }).map((r: string[]) => {
         const product: Product = {
-          id: r[0],
-          name: r[1],
-          description: r[2],
+            code: r[0],
+            name: r[1],
+            description: r[2],
+            providerURL: '',
+            provider: '',
+            imageURLs: [],
+            brand: '',
+            category: []
         }
         return product
       }) as Product[]
@@ -54,23 +49,10 @@ export class Categorizer extends Command {
       const rulesString = await fs.readFile(args.rules, 'utf-8')
       const rules: Rule[] = await JSON.parse(rulesString)
 
-      const categorized = rows.map(item => {
-        item.category = []
-        for (const rule of rules) {
-          for (const keyword of rule.keywords) {
-            const rawTextField = item.name + ' ' + item.description
-            if (rawTextField.toLocaleLowerCase().includes(keyword)) {
-              console.log('---- Text ----')
-              console.log(rawTextField)
-              console.log('---- contains -----')
-              console.log(keyword)
-              item.category.push(rule.category)
-            }
-          }
-        }
-
-        return item
+      const categorized = rows.map(x => {
+          return categorizeProduct(x, rules);
       })
+
 
       const data = stringify(categorized, {
         header: true,

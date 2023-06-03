@@ -1,5 +1,3 @@
-import {Product} from './product'
-import {Webpage} from './webpages'
 import puppeteer, {Browser, Page} from 'puppeteer'
 // eslint-disable-next-line unicorn/import-style
 import * as chalk from 'chalk'
@@ -25,7 +23,7 @@ async function extractProduct(page: Page, s: Webpage, barcode: string): Promise<
     imageURLs: [values[1]],
     description: values[2],
     brand: values[3],
-    category: values[4],
+    category: values[4].split(","),
   }
 
   if (extraImages) p.imageURLs = [...p.imageURLs, ...extraImages.filter(x => x !== null) as string[]]
@@ -58,7 +56,7 @@ async function scrape(s: Webpage, barcode: string, browser: Browser): Promise<Pr
     imageURLs: [],
     description: '',
     brand: '',
-    category: '',
+    category: [],
     providerURL: '',
     provider: 'not found',
   }
