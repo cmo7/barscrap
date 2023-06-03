@@ -1,23 +1,23 @@
 export interface Webpage {
+  name: string,
+  url: string,
+  navSelectors: {
+    searchBox: string,
+    searchButton: string,
+    ready: string,
+    openSearch?: string,
+    resultsPage: string,
+    multipleResultsPage?: string,
+    firstResult?: string,
+  },
+  dataSelectors: {
     name: string,
-    url: string,
-    navSelectors: {
-        searchBox: string,
-        searchButton: string,
-        ready: string,
-        openSearch?: string,
-        resultsPage:string,
-        multipleResultsPage?: string,
-        firstResult?: string,
-    },
-    dataSelectors: {
-        name: string,
-        mainImageURL: string,
-        extraImages: string,
-        description: string,
-        brand: string,
-        category: string,
-    }
+    mainImageURL: string,
+    extraImages: string,
+    description: string,
+    brand: string,
+    category: string,
+  }
 }
 
 const heo: Webpage = {
@@ -61,8 +61,30 @@ const sd: Webpage = {
   },
 }
 
+const globalFreaks: Webpage = {
+  name: 'Global Freaks',
+  url: 'https://www.global-freaks.com',
+  navSelectors: {
+    searchBox: '',
+    searchButton: '',
+    ready: '',
+    openSearch: undefined,
+    resultsPage: '',
+    multipleResultsPage: undefined,
+    firstResult: undefined,
+  },
+  dataSelectors: {
+    name: '',
+    mainImageURL: '',
+    extraImages: '',
+    description: '',
+    brand: '',
+    category: '',
+  },
+}
+
 const webpages = {
-  heo, sd,
+  globalFreaks, heo, sd,
 }
 
 export default webpages

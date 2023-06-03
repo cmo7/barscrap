@@ -20,7 +20,7 @@ $ npm install -g barscrap
 $ barscrap COMMAND
 running command...
 $ barscrap (--version)
-barscrap/0.7.0 linux-x64 node-v18.1.0
+barscrap/1.0.0 linux-x64 node-v18.16.0
 $ barscrap --help [COMMAND]
 USAGE
   $ barscrap COMMAND
@@ -29,7 +29,29 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`barscrap categorizer IN RULES OUT`](#barscrap-categorizer-in-rules-out)
 * [`barscrap help [COMMANDS]`](#barscrap-help-commands)
+* [`barscrap rules IN OUT`](#barscrap-rules-in-out)
+* [`barscrap scrape FILE OUT [INSTANCES]`](#barscrap-scrape-file-out-instances)
+
+## `barscrap categorizer IN RULES OUT`
+
+Genera un archivo de reglas JSON a partir de un CSV
+
+```
+USAGE
+  $ barscrap categorizer IN RULES OUT
+
+ARGUMENTS
+  IN     Archivo con los productos a categorizar, CSV
+  RULES  Archivo de reglas en formato JSON
+  OUT    Archivo que contendrá los productos categorizados
+
+DESCRIPTION
+  Genera un archivo de reglas JSON a partir de un CSV
+```
+
+_See code: [dist/commands/categorizer/index.ts](https://github.com/cmo7/barscrap/blob/v1.0.0/dist/commands/categorizer/index.ts)_
 
 ## `barscrap help [COMMANDS]`
 
@@ -50,4 +72,44 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.2.9/src/commands/help.ts)_
+
+## `barscrap rules IN OUT`
+
+Genera un archivo de reglas JSON a partir de un CSV
+
+```
+USAGE
+  $ barscrap rules IN OUT
+
+ARGUMENTS
+  IN   Archivo de reglas en formato CSV
+  OUT  Archivo de reglas en formato JSON
+
+DESCRIPTION
+  Genera un archivo de reglas JSON a partir de un CSV
+```
+
+_See code: [dist/commands/rules/index.ts](https://github.com/cmo7/barscrap/blob/v1.0.0/dist/commands/rules/index.ts)_
+
+## `barscrap scrape FILE OUT [INSTANCES]`
+
+Intenta descargar los datos de una serie de productos.
+
+```
+USAGE
+  $ barscrap scrape FILE OUT [INSTANCES] [-f <value>]
+
+ARGUMENTS
+  FILE       Archivo de entrada con formato de un codigo de barras por línea
+  OUT        Archivo de salida, con formato de un producto por fila en CSV
+  INSTANCES  [default: 5] Número máximo de búsquedas simultaneas (por defecto 5)
+
+FLAGS
+  -f, --failFile=<value>  Fichero donde guardar registros no encontrados
+
+DESCRIPTION
+  Intenta descargar los datos de una serie de productos.
+```
+
+_See code: [dist/commands/scrape/index.ts](https://github.com/cmo7/barscrap/blob/v1.0.0/dist/commands/scrape/index.ts)_
 <!-- commandsstop -->
