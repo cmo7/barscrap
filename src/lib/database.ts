@@ -1,6 +1,6 @@
 import * as sqlite3 from 'sqlite3'
 import {open} from 'sqlite'
-import {Product} from './types/product'
+import {Product} from '../types/product'
 
 async function openDB(): Promise<any> {
   return open({

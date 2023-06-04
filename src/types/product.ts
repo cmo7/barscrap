@@ -1,4 +1,4 @@
-interface Product {
+export interface Product {
     code: string,
     providerURL: string,
     provider: string,

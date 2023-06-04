@@ -1,5 +1,3 @@
-import {Webpage} from './types/webpage'
-
 const heo: Webpage = {
   name: 'HEO',
   url: 'https://www.heo.com',

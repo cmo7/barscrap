@@ -1,3 +1,6 @@
+import {Product} from '../types/product'
+import {Rule} from '../types/rule'
+
 export function categorizeProduct(product: Product, rules: Rule[]): Product {
   for (const rule of rules) {
     for (const keyword of rule.keywords) {
@@ -7,5 +10,6 @@ export function categorizeProduct(product: Product, rules: Rule[]): Product {
       }
     }
   }
+
   return product
 }

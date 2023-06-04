@@ -1,4 +1,4 @@
-interface Webpage {
+export interface Webpage {
     name: string,
     url: string,
     navSelectors: {
@@ -19,4 +19,4 @@ interface Webpage {
       category: string,
     }
   }
-  
+

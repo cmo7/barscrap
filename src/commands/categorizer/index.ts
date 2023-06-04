@@ -3,7 +3,8 @@ import {promises as fs} from 'node:fs'
 // eslint-disable-next-line node/no-missing-import
 import {parse, stringify} from 'csv/sync'
 import {categorizeProduct} from '../../lib/categorizer'
-
+import {Product} from '../../types/product'
+import {Rule} from '../../types/rule'
 
 export class Categorizer extends Command {
     static description: string | undefined = 'Genera un archivo de reglas JSON a partir de un CSV';
@@ -34,14 +35,14 @@ export class Categorizer extends Command {
         skip_empty_lines: true,
       }).map((r: string[]) => {
         const product: Product = {
-            code: r[0],
-            name: r[1],
-            description: r[2],
-            providerURL: '',
-            provider: '',
-            imageURLs: [],
-            brand: '',
-            category: []
+          code: r[0],
+          name: r[1],
+          description: r[2],
+          providerURL: '',
+          provider: '',
+          imageURLs: [],
+          brand: '',
+          category: [],
         }
         return product
       }) as Product[]
@@ -50,9 +51,13 @@ export class Categorizer extends Command {
       const rules: Rule[] = await JSON.parse(rulesString)
 
       const categorized = rows.map(x => {
-          return categorizeProduct(x, rules);
+        return categorizeProduct(x, rules)
+      }).map(p => {
+        return {
+          code: p.code,
+          categories: p.category.join(','),
+        }
       })
-
 
       const data = stringify(categorized, {
         header: true,

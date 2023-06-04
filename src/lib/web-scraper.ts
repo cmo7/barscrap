@@ -1,10 +1,19 @@
 import puppeteer, {Browser, Page} from 'puppeteer'
 // eslint-disable-next-line unicorn/import-style
 import * as chalk from 'chalk'
-import {Webpage} from './types/webpage'
-import {Product} from './types/product'
+import {Webpage} from '../types/webpage'
+import {Product} from '../types/product'
 
-async function extractProduct(page: Page, s: Webpage, barcode: string): Promise<Product> {
+async function completeProduct(p: Product, page: Page, s: Webpage): Promise<Product> {
+  const fullInfo = await extractProduct(page, s, p.code)
+  return fullInfo
+}
+
+async function extractProduct(
+  page: Page,
+  s: Webpage,
+  barcode: string,
+): Promise<Product> {
   const selections = await Promise.all([
     page.$eval(s.dataSelectors.name, x => x.textContent),
     page.$eval(s.dataSelectors.mainImageURL, x => x.getAttribute('src')),
@@ -15,7 +24,10 @@ async function extractProduct(page: Page, s: Webpage, barcode: string): Promise<
 
   const values = selections.map(x => x || '')
 
-  const extraImages = await page.$$eval(s.dataSelectors.extraImages, x => x.map(y => y.getAttribute('src'))) || []
+  const extraImages =
+    (await page.$$eval(s.dataSelectors.extraImages, x =>
+      x.map(y => y.getAttribute('src')),
+    )) || []
 
   const p: Product = {
     code: barcode,
@@ -28,14 +40,22 @@ async function extractProduct(page: Page, s: Webpage, barcode: string): Promise<
     category: values[4].split(','),
   }
 
-  if (extraImages) p.imageURLs = [...p.imageURLs, ...extraImages.filter(x => x !== null) as string[]]
+  if (extraImages)
+    p.imageURLs = [
+      ...p.imageURLs,
+      ...(extraImages.filter(x => x !== null) as string[]),
+    ]
 
   // db.insert(p)
 
   return p
 }
 
-async function scrape(s: Webpage, barcode: string, browser: Browser): Promise<Product> {
+async function scrape(
+  s: Webpage,
+  barcode: string,
+  browser: Browser,
+): Promise<Product> {
   const page = await browser.newPage()
   await page.goto(s.url, {waitUntil: 'domcontentloaded'})
   await page.setViewport({width: 1920, height: 1080})
@@ -92,7 +112,11 @@ async function scrape(s: Webpage, barcode: string, browser: Browser): Promise<Pr
   return p
 }
 
-async function batchProcess(barcodes: string[], batchSize: number, w: Webpage): Promise<[Product[], string[]]> {
+async function batchProcess(
+  barcodes: string[],
+  batchSize: number,
+  w: Webpage,
+): Promise<[Product[], string[]]> {
   const browser = await puppeteer.launch({headless: 'new'})
 
   let queue = barcodes // .filter(async x => !db.exists(x))
@@ -107,8 +131,11 @@ async function batchProcess(barcodes: string[], batchSize: number, w: Webpage): 
     try {
       console.log('Procesando Batch:')
       console.log(batch)
-      // eslint-disable-next-line no-await-in-loop
-      results = [...results, ...await Promise.all(batch.map(x => scrape(w, x, browser)))]
+      results = [
+        ...results,
+        // eslint-disable-next-line no-await-in-loop
+        ...(await Promise.all(batch.map(x => scrape(w, x, browser)))),
+      ]
       processed += batchSize
     } catch {
       console.log('Error con el batch, devolviendo a la cola y continuando')
@@ -124,14 +151,16 @@ async function batchProcess(barcodes: string[], batchSize: number, w: Webpage): 
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function splitInBatches(barcodes: string[], batchSize: number): Promise<string[][]> {
+async function splitInBatches(
+  barcodes: string[],
+  batchSize: number,
+): Promise<string[][]> {
   const result = []
   while (barcodes.length > 0) {
     const b = []
     for (let i = 0; i < batchSize && barcodes.length > 0; i++) {
       const data = barcodes.pop()
-      if (data)
-        b.push(data)
+      if (data) b.push(data)
     }
 
     result.push(b)
@@ -140,4 +169,4 @@ async function splitInBatches(barcodes: string[], batchSize: number): Promise<st
   return result
 }
 
-export {scrape, batchProcess}
+export {scrape, batchProcess, completeProduct}

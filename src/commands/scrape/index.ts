@@ -4,10 +4,10 @@ import {promises as fs} from 'node:fs'
 import {parse, stringify} from 'csv/sync'
 import {batchProcess} from '../../web-scraper'
 import webpages from '../../webpages'
-import {Product} from '../../product'
 // eslint-disable-next-line unicorn/import-style
 import * as chalk from 'chalk'
 import banners from '../../util/banners'
+import {Product} from '../../types/product'
 
 export class Scrape extends Command {
   static description: string | undefined = 'Intenta descargar los datos de una serie de productos.';
