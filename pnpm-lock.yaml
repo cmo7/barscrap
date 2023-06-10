@@ -31,8 +31,8 @@ dependencies:
 
 devDependencies:
   '@oclif/test':
-    specifier: ^2.3.21
-    version: 2.3.21(@types/node@16.18.34)(typescript@4.9.5)
+    specifier: ^2.3.22
+    version: 2.3.22(@types/node@16.18.34)(typescript@4.9.5)
   '@types/async-csv':
     specifier: ^2.1.1
     version: 2.1.1
@@ -772,8 +772,8 @@ packages:
       - supports-color
       - typescript
 
-  /@oclif/test@2.3.21(@types/node@16.18.34)(typescript@4.9.5):
-    resolution: {integrity: sha512-RaFNf3/PMwBLrL9yu8aFsONsUSpyI16AGC6HiAabDyu534Rh+jBtqy/dPZ53/SOCBOholhZmVs7jT0UE5Utwew==}
+  /@oclif/test@2.3.22(@types/node@16.18.34)(typescript@4.9.5):
+    resolution: {integrity: sha512-0wLW8YnLS9Gvipgu64ZtzPmi7HfyJkPziU/tfW8T/4lQyalDvL8MS05+1UPR6V6hXu86Ehg0CbWJDeU4TB+e1Q==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@oclif/core': 2.8.5(@types/node@16.18.34)(typescript@4.9.5)
