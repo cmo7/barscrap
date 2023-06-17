@@ -61,8 +61,8 @@ devDependencies:
     specifier: ^9.2.2
     version: 9.2.2
   oclif:
-    specifier: ^3.9.0
-    version: 3.9.0(@types/node@16.18.34)(typescript@4.9.5)
+    specifier: ^3.9.1
+    version: 3.9.1(@types/node@16.18.34)(typescript@4.9.5)
   shx:
     specifier: ^0.3.4
     version: 0.3.4
@@ -1510,7 +1510,7 @@ packages:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
     dev: true
 
@@ -4246,8 +4246,8 @@ packages:
     resolution: {integrity: sha512-EFVjAYfzWqWsBMRHPMAXLCDIJnpMhdWAqR7xG6M6a2cs6PMFpl/+Z20w9zDW4vkxOFfddegBKq9Rehd0bxWE7A==}
     engines: {node: '>= 10'}
 
-  /oclif@3.9.0(@types/node@16.18.34)(typescript@4.9.5):
-    resolution: {integrity: sha512-fsFyHVQYJdE50EcKrBjwzl2WT5sZUtTiRY1vqMwykgLFUDYrQS0lj7yqy2IgcPSmAWaLQryODdfBujCWOU98Ww==}
+  /oclif@3.9.1(@types/node@16.18.34)(typescript@4.9.5):
+    resolution: {integrity: sha512-gJ8gJrohFY8qEeVBOw7wgAFdwPt2CTTkEFXDTkfUeXap6URIy6ngP7g/E1A2zFt2I0wH/qQHwcfuTpfBbj1+Uw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
