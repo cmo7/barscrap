@@ -31,8 +31,8 @@ dependencies:
 
 devDependencies:
   '@oclif/test':
-    specifier: ^2.3.21
-    version: 2.3.21(@types/node@16.18.34)(typescript@4.9.5)
+    specifier: ^2.3.23
+    version: 2.3.23(@types/node@16.18.34)(typescript@4.9.5)
   '@types/async-csv':
     specifier: ^2.1.1
     version: 2.1.1
@@ -772,12 +772,12 @@ packages:
       - supports-color
       - typescript
 
-  /@oclif/test@2.3.21(@types/node@16.18.34)(typescript@4.9.5):
-    resolution: {integrity: sha512-RaFNf3/PMwBLrL9yu8aFsONsUSpyI16AGC6HiAabDyu534Rh+jBtqy/dPZ53/SOCBOholhZmVs7jT0UE5Utwew==}
+  /@oclif/test@2.3.23(@types/node@16.18.34)(typescript@4.9.5):
+    resolution: {integrity: sha512-SEbVaE6KxA6+pwDdgcogy2CLu+GdR0p5yAbIFN0LeakeQvdjaUGdaz0vX/VN7+QaKr08jmjhHO5VpF2iaRuVZg==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@oclif/core': 2.8.5(@types/node@16.18.34)(typescript@4.9.5)
-      fancy-test: 2.0.25
+      fancy-test: 2.0.27
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -2551,8 +2551,8 @@ packages:
       - supports-color
     dev: false
 
-  /fancy-test@2.0.25:
-    resolution: {integrity: sha512-4OKW+SC62aP3Y19YlCWxjKJD0iW4kjLqUvdd9OaW1lM7Co/FX3PTi2NHguzsj2vmPs/6mMITKu0saYAr2uZA4g==}
+  /fancy-test@2.0.27:
+    resolution: {integrity: sha512-NUhkIpeHc4ebvkGLhQmlwpd9hd/ytOXTEmX2dFJ0e5VL61Ds7/RUHUmdSRY27VWil+uAuWSU8q6mUymrkxHC8Q==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@types/chai': 4.3.5
